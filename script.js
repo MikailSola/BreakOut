@@ -1,3 +1,10 @@
+let movingRight = false;
+let movingLeft = false;
+
+let xpos = 500;
+let ypos = 700;
+let speed = 5;
+
 var x, y, vx, vy;
 
 function setup() {
@@ -11,16 +18,32 @@ function setup() {
 
 function draw() {
 	background(0);
-  
-  ellipse(x,y,50,50);
-  x = x + vx;
-  y = y + vy;
+    
+  fill(0, 0, 255);
+  rect(xpos, ypos, 100, 25);
+    
+    if (movingRight) {
+        xpos += speed;
+    }
+    if (movingLeft) {
+        xpos -= speed;
+    }
+}
 
-  if(x <= 0 || x >= width){
-    vx = vx * -1;
-  }
+function keyPressed() {
+    if (key == 'a') {
+        movingLeft = true;
+    }
+    if (key == 'd') {
+        movingRight = true;
+    }
+}
 
-   if(y <= 0 || y >= height){
-    vy = vy * -1;
-  }
+function keyReleased() {
+    if (key == 'a') {
+        movingLeft = false;
+    }
+    if (key == 'd') {
+        movingRight = false;
+    }
 }
