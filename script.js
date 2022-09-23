@@ -1,7 +1,7 @@
 var x, y, vx, vy;
 
 function setup() {
-	createCanvas(1800, 900);
+	createCanvas(1000, 900);
 
   x = 0;
   y = 150;
