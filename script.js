@@ -32,6 +32,14 @@ function draw() {
     if (y < 0 || y > 900) {
         vy = vy * -1;
     }
+    if (xpos < 0) {
+        xpos = 5
+    }
+
+    if (xpos > 900) {
+        xpos = 890
+    }
+        
     if ((x > xpos &&
         x < xpos + 100) &&
         (y + (50 / 2) >= ypos)) {
