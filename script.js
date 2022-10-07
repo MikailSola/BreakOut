@@ -37,7 +37,7 @@ function draw() {
     }
 
     if (xpos > 900) {
-        xpos = 890
+        xpos = 899
     }
         
     if ((x > xpos &&
