@@ -1,37 +1,21 @@
 class Paddle {
     constructor() {
-        this.x = xpos;
-        this.y = ypos;
-        this.length = l;
-        this.width = w;
-        
+        this.x = 100;
+        this.y = height - 50;
+        this.length = 20;
+        this.width = 100;        
     }
 
-    draw() {
-        fill(200, 0, 0);
-        ellipse(x, y, 23, 23);
-        x = x + vx;
-        y = y + vy;
+    draw() {          
 
-        if (x < 0 || x > 1000) {
-            vx = vx * -1;
+        if(keyIsDown(RIGHT_ARROW) ){
+            this.x += 5;
         }
-
-        if (y < 0 || y > 900) {
-            vy = vy * -1;
+        if(keyIsDown(LEFT_ARROW)) {
+            this.x -= 5;
         }
-
-        if ((x > xpos && x < xpos + width && x < ypos + length) &&
-            (y + length >= ypos)) {
-            vx = ((xpos + width / 2 - x) / 8) * -1;
-            vy *= -1;
-        }
-
-        if (xpos < 0) { xpos = xpos + speed; }
-        if (xpos > 800) { xpos = xpos - speed; }
 
         fill(255, 255, 255);
-        rect(xpos, ypos, width, length);
-
+        rect(this.x, this.y, this.width, this.length);
     }
 }
