@@ -2,52 +2,49 @@
 let movingRight = false;
 let movingLeft = false;
 
-let xpos = 800;
-let ypos = 700;
-let speed = 6;
-let length = 25;
+let xpos = 400;
+let ypos = 850;
+let speed = 7;
+let length = 12;
+let width = 200;
+var paddle;
 
-var x, y, vx, vy;
+//let x, y, vx, vy;
 
 function setup() {
     createCanvas(1000, 900);
+    paddle = new Paddle()
 
-    x = 0;
-    y = 150;
-    vx = 6;
-    vy = 6;
+    // x = 500;
+    // y = 0;
+    // vx = 7;
+    // vy = 7;
 }
 
 function draw() {
     background(0);
+    
+    paddle.draw();
+   
+          fill(200, 0, 0);
+        ellipse(x, y, 23, 23);
+        x = x + vx;
+        y = y + vy;
 
-    ellipse(x, y, 50, 50);
-    x = x + vx;
-    y = y + vy;
+        if (x < 0 || x > 1000) {
+            vx = vx * -1;
+        }
 
-    if (x < 0 || x > 1000) {
-        vx = vx * -1;
-    }
+        if (y < 0 || y > 900) {
+            vy = vy * -1;
+        }
 
-    if (y < 0 || y > 900) {
-        vy = vy * -1;
-    }
-    if (xpos < 0) {
-        xpos = 5
-    }
+        if ((x > xpos && x < xpos + width && x < ypos + length) &&
+            (y + length >= ypos)) {
+            vx = ((xpos + width / 2 - x) / 8) * -1;
+            vy *= -1;
+        }
 
-    if (xpos > 900) {
-        xpos = 899
-    }
-        
-    if ((x > xpos &&
-        x < xpos + 100) &&
-        (y + (50 / 2) >= ypos)) {
-        vx *= 1;
-        vy *= -1;
-    }
-    fill(0, 0, 255);
-    rect(xpos, ypos, 100, length);
 
     if (movingRight) {
         xpos += speed;
@@ -74,3 +71,4 @@ function keyReleased() {
         movingRight = false;
     }
 }
+
