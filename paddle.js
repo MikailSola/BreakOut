@@ -2,20 +2,22 @@ class Paddle {
     constructor() {
         this.x = 100;
         this.y = height - 50;
-        this.length = 20;
-        this.width = 100;        
+        this.w = 100;
+        this.h = 15;
     }
 
-    draw() {          
-
-        if(keyIsDown(RIGHT_ARROW) ){
-            this.x += 5;
-        }
-        if(keyIsDown(LEFT_ARROW)) {
-            this.x -= 5;
-        }
-
+    show() {          
         fill(255, 255, 255);
         rect(this.x, this.y, this.width, this.length);
+    }
+
+    move(dir) {
+        if (this.x > width - this.w) {
+            this.x = width - this.w - 1;
+        } else if (this.x < this.w) {
+            this.x = this.w + 1;
+        }
+            this.x = this.x + dir;
+        }
     }
 }
